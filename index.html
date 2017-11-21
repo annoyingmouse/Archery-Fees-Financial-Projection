@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Fees Calculator</title>
+        <link rel="stylesheet" type="text/css" href="css/sakura.css"/>
+        <link rel="stylesheet" type="text/css" href="css/main.css"/>
+    </head>
+    <body>
+        <h2>
+            Fees Calculator
+            <select id="projection" class="updateData">
+                <option value="1" selected>One year projection</option>
+                <option value="2">Two year projection</option>
+                <option value="3">Three year projection</option>
+            </select>
+        </h2>
+        <svg></svg>
+        <div class="grid">
+            <div class="col-1-3">
+                <label for="purse">Carry forward (£)</label>
+                <input class="updateData" id="purse" placeholder="Enter a Number" type="number" value="1500"/>
+            </div>
+            <div class="col-1-3">
+                <label for="includes">
+                    <input class="updateData" checked="checked" id="includes" name="checkbox" type="checkbox">
+                    Include memberships
+                </label>
+            </div>
+            <div class="col-1-3">
+                <label for="memberships">Memberships (£)</label>
+                <input class="updateData" id="memberships" placeholder="Enter a Number" type="number" value="78"/>
+            </div>
+        </div>
+        <div class="grid">
+            <div class="col-1-3">
+                <label for="extras">Pay to shoot (£)</label>
+                <input class="updateData" id="extras" placeholder="Enter a Number" type="number" value="25"/>
+            </div>
+            <div class="col-1-3">
+                <label for="subscribers">Subscribers</label>
+                <input class="updateData" id="subscribers" placeholder="Enter a Number" type="number" value="10"/>
+            </div>
+            <div class="col-1-3">
+                <label for="subscription">Subscription (£)</label>
+                <input class="updateData" id="subscription" placeholder="Enter a Number" type="number" value="18">
+            </div>
+        </div>
+        <div class="grid">
+            <div class="col-1-3">
+                <label for="misc">Miscellaneous costs (£)</label>
+                <input class="updateData" id="misc" placeholder="Enter a Number" type="number" value="92"/>
+            </div>
+            <div class="col-1-3">
+                <label for="indoor">Indoor monthly costs (£)</label>
+                <input class="updateData"id="indoor" placeholder="Enter a Number" type="number" value="260"/>
+            </div>
+            <div class="col-1-3">
+                <label for="outdoor">Outdoor monthly costs (£)</label>
+                <input class="updateData" id="outdoor" placeholder="Enter a Number" type="number" value="0">
+            </div>
+        </div>
+        <script src="js/d3.v4.min.js"></script>
+        <script src="js/Raw.js"></script>
+        <script src="js/main.js"></script>
+    </body>
+</html>
