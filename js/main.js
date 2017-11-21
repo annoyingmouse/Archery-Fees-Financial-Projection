@@ -83,7 +83,7 @@
     const inputs = document.querySelectorAll(".updateData");
     Array.from(inputs).forEach(input => {
         input.addEventListener("change", () => {
-            if(!silent){
+            if (!silent) {
                 raw = new Raw();
                 location.hash = raw.toString();
                 const vis = d3.select("body").transition();
@@ -137,7 +137,7 @@
                 }
                 silent = false;
                 raw = new Raw(hash);
-            }else{
+            } else {
                 raw = new Raw();
             }
             const vis = d3.select("body").transition();

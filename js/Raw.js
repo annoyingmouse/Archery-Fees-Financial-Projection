@@ -9,48 +9,68 @@ class Raw {
             "textarea": (item) => this.inputs[item] = document.getElementById(item).value,
             "text": (item) => this.inputs[item] = document.getElementById(item).value
         };
-        this.defaultFields = ["purse", "subscribers", "subscription", "indoor", "outdoor", "misc", "includes", "memberships", "extras", "projection", "explanation", "includes"]
-
-        if(hashedInputs){
+        this.defaultFields = [
+            "purse",
+            "subscribers",
+            "subscription",
+            "indoor",
+            "outdoor",
+            "misc",
+            "includes",
+            "memberships",
+            "extras",
+            "projection",
+            "explanation",
+            "includes"];
+        if (hashedInputs) {
             this.getHashes(hashedInputs)
-        }else{
+        } else {
             this.getInputs();
         }
         this.getData();
     }
-    getHashes(hash){
+
+    getHashes(hash) {
         Object.keys(hash).forEach((item) =>
             (this.types[document.getElementById(item).type] || this.types["text"])(item), this);
     }
-    getInputs(){
+
+    getInputs() {
         this.defaultFields.forEach((item) =>
             (this.types[document.getElementById(item).type] || this.types["text"])(item), this);
     }
+
     toString() {
         return Object.keys(this.inputs).map(i => `${i}=${this.inputs[i]}`).join("&");
     }
+
     getData() {
         this.data = [];
         let year = 2001;
         let month = 3;
         let localTotal = this.inputs.purse;
         let periods = this.inputs.projection * 12;
+        const changeYear = () => {
+            month = 0;
+            year++;
+        };
         for (let i = 0; i < periods; i++) {
             this.data.push({
                 "date": new Date(year, month, 1),
                 "close": localTotal
             });
-            if (month === 11) {
-                month = 0;
-                year++;
-            }
+            month === 11 && changeYear();
             if (month === 9 && this.inputs.includes) {
                 localTotal -= this.inputs.subscribers * this.inputs.memberships
             }
-            localTotal += this.inputs.subscribers * this.inputs.subscription;
-            localTotal += this.inputs.extras;
-            localTotal -= (month >= 3 && month < 9) ? this.inputs.indoor : this.inputs.outdoor;
-            localTotal -= this.inputs.misc;
+            localTotal +=
+                (this.inputs.subscribers * this.inputs.subscription) + this.inputs.extras;
+            localTotal -=
+                this.inputs.misc + (
+                    (month >= 3 && month < 9)
+                        ? this.inputs.indoor
+                        : this.inputs.outdoor
+                );
             month++;
         }
     }
