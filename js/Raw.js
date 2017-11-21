@@ -68,8 +68,8 @@ class Raw {
             localTotal -=
                 this.inputs.misc + (
                     (month >= 3 && month < 9)
-                        ? this.inputs.indoor
-                        : this.inputs.outdoor
+                        ? this.inputs.outdoor
+                        : this.inputs.indoor
                 );
             month++;
         }
