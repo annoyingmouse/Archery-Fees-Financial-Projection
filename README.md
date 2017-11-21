@@ -1,4 +1,4 @@
-# Archery-Fees-Financial-Projection
+# Archery Fees Financial Projection
 
 This represents my first serious play with [D3](https://d3js.org/), and what a cracking little library it is too!
 
